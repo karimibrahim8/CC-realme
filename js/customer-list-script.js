@@ -88,35 +88,3 @@ function saveCustomerToLocalStorage() {
     });
     localStorage.setItem('customers', JSON.stringify(customers.reverse()));
 }
-
-document.getElementById('sparePartsForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const customerName = document.getElementById('customerName').value;
-    const phoneNumber = document.getElementById('phoneNumber').value;
-    const phoneModel = document.getElementById('phoneModel').value;
-    const sparePart = document.getElementById('sparePart').value;
-    const imei = document.getElementById('imei').value;
-    const area = document.getElementById('area').value;
-    const date = document.getElementById('date').value;
-
-    const customer = {
-        name: customerName,
-        phone: phoneNumber,
-        phoneModel: phoneModel,
-        sparePart: sparePart,
-        imei: imei,
-        area: area,
-        date: date,
-        branches: '',
-        status: 'pending'
-    };
-
-    addCustomerToTable(customer, 0);
-    saveCustomerToLocalStorage();
-
-    document.getElementById('sparePartsForm').reset();
-
-    showCustomAlert('Form submitted successfully!');
-});
-
