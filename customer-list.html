@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requests</title>
+    <link rel="stylesheet" href="css/customer-list-script.css">
+</head>
+
+<body>
+    <img src="photos/570a0b4ca0ef30afba7792975a430723.png" alt="Realme Logo" class="logo">
+    <div class="container">
+        <h1>REQUESTS</h1>
+        <nav>
+          <div class="first">  
+            <a href="index.html">SPARE PART REQUEST</a>
+            <button id="exportButton">EXPORT</button></div>
+        </nav>
+        <div class="table-container">
+            <table id="customerTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Phone Model</th>
+                        <th>Spare Part</th>
+                        <th>IMEI</th>
+                        <th>Area</th>
+                        <th>Date</th>
+                        <th>Branches</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="customerTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    <script src="js/customer-list-script.js"></script>
+</body>
+
+</html>
