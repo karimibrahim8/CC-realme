@@ -11,12 +11,36 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 
+<style>
+    /* Custom style for REQUESTS link */
+    .custom-link {
+        color: #FEC200; /* Red color */
+        padding: 55px;
+    }
+
+    .custom-link:hover {
+        color: #FEC200; /* Blue color on hover */
+        text-decoration: underline; /* Underline on hover */
+
+    }
+    
+    .custom-link:visited {
+        color: #FEC200; /* Blue color on hover */
+    }
+
+</style>
+
 <body>
-     <img src="photos/570a0b4ca0ef30afba7792975a430723.png" alt="Realme Logo" class="logo">
+    <img src="photos/570a0b4ca0ef30afba7792975a430723.png" alt="Realme Logo" class="logo">
 
     <div class="container">
-        <h1>SPARE PART REQUEST</h1> 
-        <a href="customer-list.html">Requests</a>
+        <h1>SPARE PART REQUEST</h1>
+        <nav>
+            <div class="first">
+                <a href="customer-list.html" class="custom-link">REQUESTS</a>
+            </div>
+        </nav>
+        <dev style="height: 10px;"></dev>
         <form id="sparePartsForm">
             <label for="customerName"></label>
             <input type="text" id="customerName" required placeholder=" Customer Name">
@@ -40,7 +64,7 @@
                 <option value="realme 9i">realme 9i</option>
                 <option value="realme 9i 5G">realme 9i 5G</option>
                 <option value="realme 11 4G">realme 11 4G</option>
-                <option value="realme 11 5G">realme 11 5G</option>               
+                <option value="realme 11 5G">realme 11 5G</option>
                 <option value="realme 11 Pro">realme 11 Pro</option>
                 <option value="realme 11 Pro +">realme 11 Pro +</option>
                 <option value="realme 11 Pro 5G">realme 11 Pro 5G</option>
@@ -89,7 +113,7 @@
             <input type="text" id="imei" required placeholder="IMEI">
 
             <label for="area"></label>
-            <select id="area" >
+            <select id="area">
                 <option>Select an area</option>
                 <option value="القاهرة">القاهرة</option>
                 <option value="الجيزة">الجيزة</option>
@@ -128,10 +152,9 @@
     </div>
     <div id="customAlert" class="custom-alert">
         <span id="customAlertMessage"></span>
-        <button onclick="closeCustomAlert()">OK</button>
     </div>
-    <script src="dist/bundle.js"></script>
-    <script src="js/closeButton.js"></script>
+    <script src="dist/main.bundle.js"></script>
+    <script src="dist/firebase.bundle.js"></script>
 </body>
 
 </html>

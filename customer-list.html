@@ -6,39 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Requests</title>
     <link rel="stylesheet" href="css/customer-list-script.css">
+    <style>
+        .loader {
+            margin: auto;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #FEC200;
+            width: 100px;
+            height: 100px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            top: 40%;
+            left: 48%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .content {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
     <img src="photos/570a0b4ca0ef30afba7792975a430723.png" alt="Realme Logo" class="logo">
-    <div class="container">
-        <h1>REQUESTS</h1>
-        <nav>
-          <div class="first">  
-            <a href="index.html">SPARE PART REQUEST</a>
-            <button id="exportButton">EXPORT</button></div>
-        </nav>
-        <div class="table-container">
-            <table id="customerTable">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Phone Model</th>
-                        <th>Spare Part</th>
-                        <th>IMEI</th>
-                        <th>Area</th>
-                        <th>Date</th>
-                        <th>Branches</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="customerTableBody"></tbody>
-            </table>
+    <div class="container content" id="content">
+        <div class="container">
+            <h1>REQUESTS</h1>
+            <nav>
+                <div class="first">
+                    <a href="index.html">SPARE PART REQUEST</a>
+                    <button id="exportButton">EXPORT</button>
+                </div>
+            </nav>
+            <div class="table-container">
+                <table id="customerTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Phone Model</th>
+                            <th>Spare Part</th>
+                            <th>IMEI</th>
+                            <th>Area</th>
+                            <th>Date</th>
+                            <th>Branches</th>
+                            <th>Status</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerTableBody"></tbody>
+                </table>
+            </div>
         </div>
+
     </div>
+    <div id="loader" class="loader"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
-    <script src="js/customer-list-script.js"></script>
+    <script src="dist/customerList.bundle.js"></script>
 </body>
 
 </html>

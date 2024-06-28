@@ -1,10 +1,30 @@
+import { db, getRequests } from './firebase.js';
 
-document.addEventListener('DOMContentLoaded', function() {
-    const storedCustomers = JSON.parse(localStorage.getItem('customers')) || [];
-    storedCustomers.forEach((customer, index) => addCustomerToTable(customer, index));
+
+function showLoader() {
+    document.getElementById('loader').style.display = 'block';
+    document.getElementById('content').style.display = 'none';
+}
+
+function hideLoader() {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+}
+
+
+
+document.addEventListener('DOMContentLoaded', async function () {
+    // const storedCustomers = JSON.parse(localStorage.getItem('customers')) || [];
+    showLoader();
+
+    const requests = await getRequests(db);
+
+    requests.forEach((customer, index) => addCustomerToTable(customer, index));
+    hideLoader();
+
 });
 
-document.getElementById('exportButton').addEventListener('click', function() {
+document.getElementById('exportButton').addEventListener('click', function () {
     const customerTableRows = document.querySelectorAll('#customerTableBody tr');
     const data = [];
 
@@ -36,22 +56,25 @@ function addCustomerToTable(customer, index) {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
         <td>${index + 1}</td>
-        <td>${customer.name}</td>
-        <td>${customer.phone}</td>
-        <td>${customer.phoneModel}</td>
-        <td>${customer.sparePart}</td>
-        <td>${customer.imei}</td>
-        <td>${customer.area}</td>
-        <td>${customer.date}</td>
-        <td><textarea class="branch-input">${customer.branches || ''}</textarea></td>
+        <td>${customer['name']}</td>
+        <td>${customer['phone']}</td>
+        <td>${customer['phoneModel']}</td>
+        <td>${customer['sparePart']}</td>
+        <td>${customer['imei']}</td>
+        <td>${customer['area']}</td>
+        <td>${customer['date']}</td>
+        <td><textarea class="branch-input">${customer['branches'] || ''}</textarea></td>
         <td>
             <select class="select-status" onchange="updateSelectStyle(this)">
-                <option value="pending" ${customer.status === 'pending' ? 'selected' : ''}>Pending</option>
-                <option value="answered" ${customer.status === 'answered' ? 'selected' : ''}>Answered</option>
-                <option value="not-answered" ${customer.status === 'not-answered' ? 'selected' : ''}>Not Answered</option>
+                <option value="pending" ${customer['status'] === 'pending' ? 'selected' : ''}>Pending</option>
+                <option value="answered" ${customer['status'] === 'answered' ? 'selected' : ''}>Answered</option>
+                <option value="not-answered" ${customer['status'] === 'not-answered' ? 'selected' : ''}>Not Answered</option>
             </select>
+            <td>
+           <button onclick="updateCustomer()">UPDATE</button>
         </td>
     `;
+
     customerTableBody.prepend(newRow);
     updateSelectStyle(newRow.querySelector('.select-status'));
     newRow.querySelector('.branch-input').addEventListener('input', saveCustomerToLocalStorage);
@@ -87,4 +110,8 @@ function saveCustomerToLocalStorage() {
         customers.push(customer);
     });
     localStorage.setItem('customers', JSON.stringify(customers.reverse()));
+}
+
+function updateCustomer(id) {
+    console.log("UPDATE FROM ID: " + id);
 }
