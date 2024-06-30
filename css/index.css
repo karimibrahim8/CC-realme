@@ -16,9 +16,6 @@ body {
 
 .container {
     background-color: white;
-    /* padding: 20px; */
-    /* border-radius: 8px; */
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     width: 90%;
     max-width: 500px;
     display: flex;
@@ -30,7 +27,6 @@ h1, h2 {
     top: 5%;
     color: #676C70;
     margin: 0;
-    /* font-family: Inter; */
     align-self: center;
 }
 
@@ -53,9 +49,6 @@ input, select {
 }
 
 button {
-    /* margin-top: 20px;
-    margin-left: 80px;
-    margin-right: 80px; */
     margin-top: 10px;
     height: 6vh;
     padding: 0px 10px;
@@ -75,7 +68,7 @@ button:hover {
 }
 
 .table-container {
-    overflow-x: auto; /* Allow horizontal scrolling for the table */
+    overflow-x: auto;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
