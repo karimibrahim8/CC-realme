@@ -9,8 +9,8 @@ body {
 }
 .logo {
     position: absolute;
-    top: 2%;
-    left: 0.5%;
+    top: 0%;
+    left: 0%;
     width: 10%; /* Adjust the width as needed */
 }
 
@@ -167,4 +167,8 @@ td:last-child, th:last-child {
     text-decoration: none;
     text-align: center;
     margin-bottom: 5px;
+}
+
+.requests:hover {
+    text-decoration: underline;
 }
