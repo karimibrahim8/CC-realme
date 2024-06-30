@@ -1,7 +1,7 @@
 
 // sImport the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, getDocs, setDoc, doc } from 'firebase/firestore/lite';
+import { getFirestore, collection, addDoc, getDocs, setDoc, doc, updateDoc } from 'firebase/firestore/lite';
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -58,7 +58,19 @@ export async function setRequests(db, area, branches, date, imei, name, phone, p
             sparePart: sparePart,
             status: status
         });
-        console.log('Document written with ID: ', id);
+        // console.log('Document written with ID: ', id);
+    } catch (e) {
+        console.error('Error adding document: ', e);
+    }
+}
+
+export async function updateRequests(req_id, branches, status) {
+    try {
+        const requestsCol = collection(db, 'requests');
+        await updateDoc(doc(requestsCol, req_id), {
+            branches: branches,
+            status: status
+        });
     } catch (e) {
         console.error('Error adding document: ', e);
     }

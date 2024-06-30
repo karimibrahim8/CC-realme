@@ -1,8 +1,8 @@
 
-import { setRequests,db } from './firebase.js';
+import { setRequests, db } from './firebase.js';
 
 
-document.getElementById('sparePartsForm').addEventListener('submit', async function(event) {
+document.getElementById('sparePartsForm').addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const customerName = document.getElementById('customerName').value;
@@ -13,16 +13,16 @@ document.getElementById('sparePartsForm').addEventListener('submit', async funct
     const area = document.getElementById('area').value;
     const date = document.getElementById('date').value;
 
- // Reset the form
+    // Reset the form
     document.getElementById('sparePartsForm').reset();
 
     // Show custom alert
     showCustomAlert('Upload Request');
-    await setRequests(db,area,"",date,imei,customerName,phoneNumber,phoneModel,sparePart,'pending')
+    await setRequests(db, area, "", date, imei, customerName, phoneNumber, phoneModel, sparePart, 'pending')
 
     // Show custom alert
     delayedChangeCustomAlert('Your request has been submitted!')
-    setTimeout(killAlert,1000);
+    setTimeout(killAlert, 1000);
 });
 
 function showCustomAlert(message) {
