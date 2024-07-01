@@ -108,5 +108,3 @@ async function updateCustomer(row, reqid) {
         // console.log(`Textarea or select-status for row ID: ${row.id} not found.`);
     }
 }
-
-console.log("Test");
